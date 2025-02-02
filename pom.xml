@@ -57,16 +57,6 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 
-
-		<!-- Jakarta Servlet -->
-        <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
-            <version>5.0.0</version>
-            <scope>provided</scope>
-        </dependency>
-
-
 		<!-- RabbitMQ -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
