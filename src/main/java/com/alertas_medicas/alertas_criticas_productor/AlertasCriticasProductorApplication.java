@@ -1,4 +1,4 @@
-package com.alertas_medicas_historico.alertas_criticas_productor;
+package com.alertas_medicas.alertas_criticas_productor;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
