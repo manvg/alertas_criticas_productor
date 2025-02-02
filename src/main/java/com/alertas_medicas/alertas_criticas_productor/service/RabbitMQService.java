@@ -11,14 +11,17 @@ public class RabbitMQService {
 
     private final RabbitTemplate rabbitTemplate;
 
-    @Value("${rabbitmq.queue.alertas}")
-    private String alertasQueue;
+    @Value("${rabbitmq.exchange.alertas}")
+    private String alertasExchange;
+
+    @Value("${rabbitmq.routingkey.alertas}")
+    private String alertasRoutingKey;
 
     public RabbitMQService(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
     }
 
     public void sendAlertaCritica(SenalesVitales senales) {
-        rabbitTemplate.convertAndSend(alertasQueue, senales);
+        rabbitTemplate.convertAndSend(alertasExchange, alertasRoutingKey, senales);
     }
 }
