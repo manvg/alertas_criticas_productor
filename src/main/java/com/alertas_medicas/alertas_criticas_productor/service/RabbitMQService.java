@@ -4,7 +4,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.alertas_medicas.alertas_criticas_productor.model.SenalesVitales;
+import com.alertas_medicas.alertas_criticas_productor.model.SignosVitales;
 
 @Service
 public class RabbitMQService {
@@ -21,7 +21,7 @@ public class RabbitMQService {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    public void sendAlertaCritica(SenalesVitales senales) {
+    public void sendAlertaCritica(SignosVitales senales) {
         rabbitTemplate.convertAndSend(alertasExchange, alertasRoutingKey, senales);
     }
 }

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SenalesVitales {
+public class SignosVitales {
     private String nombrePaciente;
     private int ritmoCardiaco;
     private double temperatura;
