@@ -14,14 +14,23 @@ public class RabbitMQService {
     @Value("${rabbitmq.exchange.alertas}")
     private String alertasExchange;
 
-    @Value("${rabbitmq.routingkey.alertas}")
-    private String alertasRoutingKey;
+    @Value("${rabbitmq.routingkey.alertas_criticas}")
+    private String alertasCriticasRoutingKey;
+
+    @Value("${rabbitmq.routingkey.alertas_no_criticas}")
+    private String alertasNoCriticasRoutingKey;
 
     public RabbitMQService(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    public void sendAlertaCritica(SignosVitales senales) {
-        rabbitTemplate.convertAndSend(alertasExchange, alertasRoutingKey, senales);
+    public void enviarAlertaCritica(SignosVitales senales) {
+        rabbitTemplate.convertAndSend(alertasExchange, alertasCriticasRoutingKey, senales);
+        System.out.println("Alerta crítica enviada a RabbitMQ -> Exchange: " + alertasExchange + ", Routing Key: " + alertasCriticasRoutingKey);
+    }
+
+    public void enviarAlertaNoCritica(SignosVitales senales) {
+        rabbitTemplate.convertAndSend(alertasExchange, alertasNoCriticasRoutingKey, senales);
+        System.out.println("Alerta no crítica enviada a RabbitMQ -> Exchange: " + alertasExchange + ", Routing Key: " + alertasNoCriticasRoutingKey);
     }
 }

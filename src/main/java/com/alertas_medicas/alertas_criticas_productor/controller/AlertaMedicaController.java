@@ -19,10 +19,12 @@ public class AlertaMedicaController {
     @PostMapping("/enviar")
     public ResponseEntity<String> enviarAlerta(@RequestBody @Valid SignosVitales senales) {
         if (esAlertaCritica(senales)) {
-            rabbitMQService.sendAlertaCritica(senales);
+            rabbitMQService.enviarAlertaCritica(senales);
             return ResponseEntity.ok("Alerta crítica enviada: " + senales);
+        } else {
+            rabbitMQService.enviarAlertaNoCritica(senales);
+            return ResponseEntity.ok("Alerta no crítica enviada: " + senales);
         }
-        return ResponseEntity.ok("Signos vitales dentro de los rangos normales.");
     }
 
     private boolean esAlertaCritica(SignosVitales senales) {
