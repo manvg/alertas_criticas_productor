@@ -13,6 +13,6 @@ FROM eclipse-temurin:22-jdk
 
 COPY --from=buildstage /app/target/alertas_criticas_productor-0.0.1-SNAPSHOT.jar /app/alertas_criticas_productor.jar
 
-EXPOSE 8085
+EXPOSE 8081
 
 ENTRYPOINT [ "java", "-jar", "/app/alertas_criticas_productor.jar" ]
